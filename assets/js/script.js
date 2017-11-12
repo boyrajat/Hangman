@@ -32,12 +32,13 @@ var ansArr = [];
 			alert("You have 10 guesses left");
 			
 			
-			if (guesses > 0) {
-
+			//if (guesses > 0) {
+			if (remainingLetters > 0 && guesses > 0 ) {
 						
 			document.onkeyup = function (event) {
   			var j = String.fromCharCode(event.keyCode).toLowerCase();
-	 		alert("you picked " + j);
+	 		
+	 		//alert("you picked " + j);
 
 
 	 		if (remainingLetters === 0) {
@@ -62,13 +63,15 @@ var ansArr = [];
 	 		} else if(guesses > 0) {
 	 			
 
-	 		if (movWord.indexOf(j) === -1) {
-	 			guessArr.push(j);
-	 			document.getElementById("letGuessed").innerHTML ="Letters Already Guessed: " + guessArr.join(" ");
-	 			guesses--;
-	 			var pic = guesses;
-	 			document.getElementById("hangmanpic").src = imagesArr[pic];
-	 			document.getElementById("remGuesses").innerHTML = "Guesses Remaining: " + (guesses);
+	 			alert("you picked " + j);
+	 			
+	 			if (movWord.indexOf(j) === -1) {
+	 				guessArr.push(j);
+	 				document.getElementById("letGuessed").innerHTML ="Letters Already Guessed: " + guessArr.join(" ");
+	 				guesses--;
+	 				var pic = guesses;
+	 				document.getElementById("hangmanpic").src = imagesArr[pic];
+	 				document.getElementById("remGuesses").innerHTML = "Guesses Remaining: " + (guesses);
 	 			
 	 		
 	 		} else {
@@ -77,9 +80,11 @@ var ansArr = [];
 							ansArr[i] = j;
 							remainingLetters--;
 							document.getElementById("word").innerHTML = ansArr.join(" ");
+							alert("You're getting closer.....only " + remainingLetters + " letters to guess");
 							} 
+							//alert(remainingLetters + " Letters remaining");
 						}
-						alert(remainingLetters + " Letters remaining");
+						//alert(remainingLetters + " Letters remaining");
 						} 
 					}				
 				}
